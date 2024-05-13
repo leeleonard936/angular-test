@@ -7,6 +7,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {Dialog, DialogRef, DIALOG_DATA, DialogModule} from '@angular/cdk/dialog';
+import { Form } from 'react-bootstrap';
 
 export interface FormData {
   firstName: string;
@@ -26,10 +27,12 @@ export class AppComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open<string>(TestDialogModal, {
       width: '500px',
-      data: {fname: this.fnValue, lname: this.lnValue, email: this.eValue},
+      data: {firstName: this.fnValue, lastName: this.lnValue, email: this.eValue},
     });
   }
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  fnameFormControl = new FormControl('');
+  lnameFormControl = new FormControl('');
   fnValue='';
   lnValue='';
   eValue='';
